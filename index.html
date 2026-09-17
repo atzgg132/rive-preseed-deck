@@ -1,1 +1,1113 @@
-PLACEHOLDER_REPLACE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#FAF8F4" />
+<meta name="description" content="Rive preseed deck — $350K. The workspace for freelancers and independent studios managing multiple clients. rive.work, not rive.app." />
+<title>Rive — Preseed · $350K</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #FAF8F4;
+    --navy: #0C1E36;
+    --blue: #2563EB;
+    --grey: #6B7280;
+    --soft: #E5E0D8;
+    --white: #FFFFFF;
+    --letterbox: #0C1E36;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    background: var(--letterbox);
+    color: var(--navy);
+    font-family: "Outfit", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    color-scheme: light;
+  }
+  body { overflow: hidden; }
+  ::selection { background: var(--navy); color: var(--cream); }
+
+  /* ——— Frame: true 16:9 stage, navy letterbox ——— */
+  .viewport {
+    width: 100vw;
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: var(--letterbox);
+  }
+  .stage {
+    width: min(100vw, calc(100dvh * 16 / 9));
+    height: min(100dvh, calc(100vw * 9 / 16));
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    container-type: size;
+    container-name: stage;
+  }
+  .deck { width: 100%; height: 100%; position: relative; }
+
+  .slide {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    color: var(--navy);
+    container-type: size;
+  }
+  .js .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+  }
+  .js .slide.active { display: flex; }
+  .js .slide.active .pad {
+    animation: rise 0.42s var(--ease) both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(0.55em); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .pad {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 6.2cqi 8.6cqi 3.4cqi 7.2cqi;
+    font-size: clamp(12px, 1.15cqi, 20px);
+  }
+  .slide.is-cinematic .pad {
+    padding: 7cqi 8.6cqi 3.6cqi 7.2cqi;
+  }
+  .slide.is-cinematic .body {
+    justify-content: center;
+    padding-bottom: 0.6em;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5em;
+    margin-bottom: 1.15em;
+    flex-shrink: 0;
+  }
+  .kicker {
+    font-size: 0.72em;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .slide-no {
+    font-size: 0.72em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--grey);
+    font-variant-numeric: tabular-nums;
+  }
+  .slide-no b { color: var(--navy); font-weight: 600; }
+
+  .body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .slide:not(.is-cinematic) .body > :first-child { margin-top: auto; }
+  .slide:not(.is-cinematic) .body > :last-child { margin-bottom: auto; }
+  .cluster {
+    width: 100%;
+    margin-block: auto;
+  }
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1.1em;
+    border-top: 1px solid var(--soft);
+    font-size: 0.68em;
+    letter-spacing: 0.04em;
+    color: var(--grey);
+    flex-shrink: 0;
+  }
+  .slide.is-cinematic .foot { border-top-color: transparent; }
+
+  /* ——— Type ——— */
+  .wm {
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 0.92;
+    color: var(--navy);
+  }
+  .wm .dot { color: var(--blue); }
+  .wm-hero { font-size: 4.35em; }
+  .wm-mini { font-weight: 700; letter-spacing: -0.04em; color: var(--navy); font-size: 1.15em; }
+  .wm-mini .dot { color: var(--blue); }
+
+  .rule {
+    width: 2.1em;
+    height: 3px;
+    background: var(--blue);
+    border-radius: 2px;
+    margin: 1.15em 0 1.35em;
+  }
+
+  h1, .h1 {
+    font-size: 2.55em;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+    text-wrap: balance;
+    color: var(--navy);
+  }
+  .h1-lg {
+    font-size: 2.95em;
+    font-weight: 600;
+    letter-spacing: -0.038em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.12em;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 38em;
+    text-wrap: pretty;
+  }
+  .meta { color: var(--grey); font-size: 0.95em; font-weight: 400; }
+  .muted { color: var(--grey); font-size: 0.82em; line-height: 1.45; }
+  .note {
+    color: var(--grey);
+    font-size: 0.78em;
+    line-height: 1.45;
+    max-width: 46em;
+  }
+
+  .card.stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 13.5em;
+  }
+  .big-num {
+    font-size: 6.1em;
+    font-weight: 700;
+    letter-spacing: -0.055em;
+    line-height: 0.9;
+    font-variant-numeric: lining-nums tabular-nums;
+    color: var(--navy);
+  }
+  .label-pill {
+    display: inline-block;
+    font-size: 0.62em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    border: 1px solid color-mix(in srgb, var(--blue) 35%, var(--soft));
+    padding: 0.22em 0.55em;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .tbd {
+    display: inline-flex;
+    align-items: center;
+    border: 1px dashed #C9C2B6;
+    color: var(--grey);
+    font-size: 0.72em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.18em 0.5em;
+    border-radius: 4px;
+    line-height: 1.2;
+  }
+
+  a.mail {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.25em;
+    letter-spacing: -0.02em;
+  }
+  a.mail:hover { text-decoration: underline; }
+
+  /* ——— Cards / grids ——— */
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.7em;
+    margin-top: 1.45em;
+    position: relative;
+  }
+  .record { list-style: none; }
+  .record > li {
+    background: var(--white);
+    border: 1px solid var(--soft);
+    border-radius: 10px;
+    padding: 1em 1.05em 1.1em;
+  }
+  .record .idx {
+    display: block;
+    color: var(--blue);
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.7em;
+  }
+  .record h3 { font-size: 1.05em; font-weight: 600; margin-bottom: 0.25em; letter-spacing: -0.02em; }
+  .record .ex { font-size: 0.8em; color: var(--grey); line-height: 1.35; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9em; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em; }
+  .grid-2.align { align-items: stretch; }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--soft);
+    border-radius: 10px;
+    padding: 1.05em 1.15em 1.1em;
+  }
+  .card .n {
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 0.55em;
+  }
+  .card .n.mute { color: var(--grey); }
+  .card h3 {
+    font-size: 0.98em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3em;
+  }
+  .card p { font-size: 0.8em; color: var(--grey); line-height: 1.4; }
+
+  /* Funnel */
+  .funnel { list-style: none; }
+  .funnel li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
+    padding: 0.48em 0;
+    border-bottom: 1px solid var(--soft);
+    font-size: 0.92em;
+  }
+  .funnel li:last-child { border-bottom: none; }
+  .funnel .v { font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .funnel li.is-lead { color: var(--navy); font-weight: 500; }
+  .funnel li.is-lead .v { color: var(--blue); }
+
+  /* Why now */
+  .why { margin-top: 0.2em; }
+  .why-row {
+    display: grid;
+    grid-template-columns: 2.2em 11.5em 1fr;
+    gap: 0.9em;
+    align-items: start;
+    padding: 0.72em 0;
+    border-bottom: 1px solid var(--soft);
+  }
+  .why-row:last-child { border-bottom: none; }
+  .why-row .idx {
+    font-weight: 600;
+    color: var(--blue);
+    font-size: 0.82em;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.12em;
+  }
+  .why-row .t { font-weight: 600; font-size: 0.92em; letter-spacing: -0.015em; padding-top: 0.06em; }
+  .why-row .b { font-size: 0.88em; color: var(--grey); line-height: 1.4; }
+
+  /* Market rows */
+  .mkt { margin-top: 0.85em; display: flex; flex-direction: column; gap: 0; }
+  .mkt-row {
+    display: grid;
+    grid-template-columns: 11.5em 1fr;
+    gap: 1.4em;
+    align-items: center;
+    padding: 0.85em 0;
+    border-bottom: 1px solid var(--soft);
+  }
+  .mkt-row:last-of-type { border-bottom: none; }
+  .mkt-row .fig {
+    font-size: 1.85em;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .mkt-row .copy { font-size: 0.92em; line-height: 1.4; }
+  .mkt-row .copy .sub { display: block; color: var(--grey); font-size: 0.88em; margin-top: 0.2em; }
+
+  /* Lists */
+  ul.clean { list-style: none; }
+  ul.clean li {
+    position: relative;
+    padding: 0.38em 0 0.38em 1.05em;
+    font-size: 0.92em;
+    line-height: 1.4;
+  }
+  ul.clean li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.78em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+  .preview-list li::before { background: #C9C2B6; }
+
+  /* Team */
+  .who { padding: 1.45em 1.3em 1.55em; min-height: 9.2em; }
+  .who h3 { font-size: 1.18em; letter-spacing: -0.025em; margin-bottom: 0.4em; }
+  .who .role { font-size: 0.85em; color: var(--grey); line-height: 1.35; }
+  .who .init {
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    margin-bottom: 1.35em;
+  }
+
+  /* Insight */
+  .insight {
+    display: grid;
+    grid-template-columns: 1.12fr 1fr;
+    gap: 1.35em;
+    align-items: start;
+    margin-top: 0.15em;
+  }
+  .insight-vis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7em;
+    align-items: stretch;
+  }
+
+  /* Split before/after */
+  .split-h { font-size: 0.68em; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.85em; }
+  .split-h.before { color: var(--grey); }
+  .split-h.after { color: var(--blue); }
+  .scatter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45em;
+  }
+  .chip {
+    border: 1px solid var(--soft);
+    background: var(--white);
+    color: var(--grey);
+    font-size: 0.78em;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+  }
+  .attach { list-style: none; }
+  .attach li {
+    display: grid;
+    grid-template-columns: 1.6em 1fr;
+    gap: 0.45em;
+    padding: 0.32em 0;
+    font-size: 0.88em;
+    border-bottom: 1px solid var(--soft);
+  }
+  .attach li:last-child { border-bottom: none; }
+  .attach .n { color: var(--blue); font-weight: 600; font-size: 0.82em; }
+
+  /* Competition */
+  .lane {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1.35fr;
+    gap: 0;
+    margin-top: 0.35em;
+    font-size: 0.82em;
+    border-top: 1px solid var(--soft);
+  }
+  .lane div { padding: 0.7em 0.85em 0.7em 0; border-bottom: 1px solid var(--soft); line-height: 1.35; }
+  .lane .hd {
+    font-size: 0.78em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grey);
+    padding-top: 0.55em;
+    padding-bottom: 0.55em;
+  }
+  .lane .peer { font-weight: 600; }
+  .lane.rive {
+    background: var(--white);
+    border: 1px solid var(--soft);
+    border-radius: 8px;
+    margin-top: 0.35em;
+    outline: 1px solid transparent;
+  }
+  .lane.rive div { border-bottom: none; padding: 0.85em 0.9em; }
+  .lane.rive .peer { color: var(--navy); }
+  .mark { color: var(--blue); font-weight: 600; }
+
+  .peers { margin-top: 1em; display: grid; grid-template-columns: 1fr 1fr; gap: 0.35em 1.5em; }
+  .peers p { font-size: 0.8em; line-height: 1.4; color: var(--grey); }
+  .peers strong { color: var(--navy); font-weight: 600; }
+
+  /* Funds bar */
+  .funds {
+    display: grid;
+    grid-template-columns: 5fr 3fr 2fr;
+    gap: 4px;
+    margin: 1.15em 0 0.35em;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .funds > div {
+    background: var(--white);
+    border: 1px solid var(--soft);
+    padding: 0.95em 1em 1em;
+  }
+  .funds .pct {
+    font-size: 1.65em;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .funds h3 { font-size: 0.88em; font-weight: 600; margin: 0.4em 0 0.25em; }
+  .funds p { font-size: 0.75em; color: var(--grey); line-height: 1.35; }
+
+  .gates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55em 1.1em;
+    margin-top: 0.55em;
+  }
+  .gate {
+    display: grid;
+    grid-template-columns: 1.6em 1fr;
+    gap: 0.45em;
+    align-items: start;
+    padding: 0.55em 0;
+    border-top: 1px solid var(--soft);
+  }
+  .gate .g { color: var(--blue); font-weight: 600; font-size: 0.75em; padding-top: 0.15em; }
+  .gate p { font-size: 0.82em; line-height: 1.35; }
+
+  /* Chrome (screen) */
+  .progress {
+    position: absolute;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--blue);
+    z-index: 15;
+    pointer-events: none;
+    transition: width 0.28s var(--ease);
+  }
+  .hint {
+    position: absolute;
+    left: 50%;
+    bottom: 3.9cqi;
+    transform: translateX(-50%);
+    font-size: 0.68em;
+    letter-spacing: 0.05em;
+    color: var(--grey);
+    z-index: 12;
+    user-select: none;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
+  }
+  .hint.gone { opacity: 0; }
+  .nav {
+    position: absolute;
+    right: 1.35cqi;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    z-index: 12;
+  }
+  .nav button {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--soft);
+    background: var(--white);
+    color: var(--navy);
+    cursor: pointer;
+    font-size: 1.05rem;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+  }
+  .nav button:hover { border-color: var(--blue); color: var(--blue); }
+  .nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  /* Overview */
+  .overview {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 30, 54, 0.92);
+    z-index: 50;
+    padding: 4.5vh 5vw 8vh;
+    overflow: auto;
+  }
+  .overview.open { display: flex; flex-direction: column; }
+  .overview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+  .overview-top .wm { font-size: 1.35rem; color: var(--cream); }
+  .overview-top p { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,248,244,0.5); }
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    flex: 1;
+  }
+  .ov-card {
+    appearance: none;
+    text-align: left;
+    cursor: pointer;
+    background: var(--cream);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 1rem 1.05rem 1.1rem;
+    min-height: 7.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    color: var(--navy);
+    font-family: inherit;
+  }
+  .ov-card:hover { border-color: var(--blue); }
+  .ov-card.current { outline: 2px solid var(--blue); outline-offset: 1px; }
+  .ov-card .on { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; color: var(--blue); }
+  .ov-card .ot { font-size: 0.92rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+  .ov-card .os { font-size: 0.72rem; color: var(--grey); margin-top: auto; }
+
+  @media (max-width: 720px) {
+    .overview-grid { grid-template-columns: repeat(2, 1fr); }
+    .hint { display: none; }
+    .grid-5 { grid-template-columns: 1fr 1fr; }
+    .insight, .insight-vis { grid-template-columns: 1fr; }
+    .nav { position: fixed; right: 0.8rem; bottom: 0.8rem; top: auto; transform: none; flex-direction: row; }
+    .why-row { grid-template-columns: 2em 1fr; }
+    .why-row .t { grid-column: 2; }
+    .why-row .b { grid-column: 2; }
+    .mkt-row { grid-template-columns: 1fr; gap: 0.35em; }
+    .lane { grid-template-columns: 1fr; }
+    .peers { grid-template-columns: 1fr; }
+    .funds { grid-template-columns: 1fr; }
+    .gates { grid-template-columns: 1fr; }
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .slide.active .pad { animation: none; }
+    .progress { transition: none; }
+  }
+
+  /* ——— Print / PDF: every slide, 16:9 landscape, no chrome ——— */
+  @media print {
+    @page { size: 13.333in 7.5in; margin: 0; }
+    html, body {
+      background: var(--cream) !important;
+      height: auto !important;
+      overflow: visible !important;
+      width: 13.333in;
+    }
+    .progress, .nav, .hint, .overview { display: none !important; }
+    .viewport, .stage, .deck {
+      display: block !important;
+      position: static !important;
+      width: 13.333in !important;
+      height: auto !important;
+      overflow: visible !important;
+      background: var(--cream) !important;
+      inset: auto !important;
+      transform: none !important;
+    }
+    .slide,
+    .js .slide,
+    .js .slide.active {
+      display: flex !important;
+      position: relative !important;
+      inset: auto !important;
+      width: 13.333in !important;
+      height: 7.5in !important;
+      max-height: 7.5in !important;
+      overflow: hidden !important;
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      background: var(--cream) !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .slide:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+    .js .slide.active .pad,
+    .pad { animation: none !important; opacity: 1 !important; transform: none !important; }
+    a.mail { color: var(--blue) !important; text-decoration: none; }
+  }
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<div class="viewport">
+<div class="stage" id="stage">
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 Title -->
+  <section class="slide is-cinematic active" data-i="1" data-title="Title" data-sum="Workspace for multi-client independents">
+    <div class="pad">
+      <div class="body">
+        <div class="wm wm-hero">rive<span class="dot">.</span></div>
+        <div class="rule"></div>
+        <p class="lede" style="font-size:1.18em;max-width:28em">
+          Rive is the workspace for freelancers and independent studios managing multiple clients — clients, projects, agreements, invoices, and expenses in one place.
+        </p>
+        <p class="meta" style="margin-top:2em">Preseed · $350K · rive.work</p>
+        <p class="muted" style="margin-top:0.45em">Not rive.app</p>
+      </div>
+      <div class="foot"><span>Confidential</span><span>01 / 12</span></div>
+    </div>
+  </section>
+
+  <!-- 2 What -->
+  <section class="slide" data-i="2" data-title="What we do" data-sum="One operating record">
+    <div class="pad">
+      <div class="head"><p class="kicker">What we do</p><p class="slide-no"><b>02</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="max-width:18em">One operating record for multi-client independents.</h1>
+        <p class="lede" style="margin-top:0.85em;max-width:40em">
+          The relationship, the work, the promise, the money, and the proof stay attached — so the operator stops being unpaid middleware between chat, docs, and billing tools.
+        </p>
+        <ol class="grid-5 record">
+          <li><span class="idx">01</span><h3>Client</h3><p class="ex">Aster House</p></li>
+          <li><span class="idx">02</span><h3>Project</h3><p class="ex">Website launch</p></li>
+          <li><span class="idx">03</span><h3>Agreement</h3><p class="ex">Terms accepted</p></li>
+          <li><span class="idx">04</span><h3>Invoice</h3><p class="ex">INV-024 recorded</p></li>
+          <li><span class="idx">05</span><h3>Portfolio</h3><p class="ex">Enquiry returns</p></li>
+        </ol>
+        <p class="note" style="margin-top:1.35em">Payment is recorded on the work — Rive does not collect or transfer funds.</p>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 3 Traction -->
+  <section class="slide" data-i="3" data-title="Traction" data-sum="~25 deeply activated">
+    <div class="pad">
+      <div class="head"><p class="kicker">Traction · deck-proposed · Arnav audits</p><p class="slide-no"><b>03</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="margin-bottom:0.9em">Depth over vanity.</h1>
+        <div class="grid-2 align">
+          <div class="card stat" style="padding:1.4em 1.45em 1.5em">
+            <p class="muted" style="margin-bottom:0.35em;letter-spacing:0.04em">Deeply activated</p>
+            <div class="big-num">~25</div>
+            <p class="note" style="margin-top:0.9em;max-width:24em;font-size:0.88em;color:var(--navy);line-height:1.45">
+              Activated <em>and</em><br />(payment recorded <strong>or</strong> agreement accepted <strong>or</strong> portfolio enquiry).
+            </p>
+          </div>
+          <div class="card" style="padding:1.4em 1.45em 1.5em">
+            <p class="muted" style="margin-bottom:0.65em">Full funnel — context only</p>
+            <ul class="funnel">
+              <li><span>Users</span><span class="v">200</span></li>
+              <li><span>Qualified (70%)</span><span class="v">~140</span></li>
+              <li><span>Activated / 7d</span><span class="v">~49</span></li>
+              <li class="is-lead"><span>Deeply activated</span><span class="v">~25</span></li>
+            </ul>
+            <p class="note" style="margin-top:0.95em">Activated = ≥1 client + project + invoice in 7 days. Open beta · free · no ARR.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 4 Team -->
+  <section class="slide" data-i="4" data-title="Team" data-sum="Three founders. One loop.">
+    <div class="pad">
+      <div class="head"><p class="kicker">Team</p><p class="slide-no"><b>04</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="margin-bottom:1.15em">Three founders. One loop.</h1>
+        <div class="grid-3">
+          <div class="card who">
+            <div class="init">AB</div>
+            <h3>Arnav Bhattacharya</h3>
+            <p class="role">Founder · Product &amp; Engineering</p>
+          </div>
+          <div class="card who">
+            <div class="init">AC</div>
+            <h3>Agnik Chakravorty</h3>
+            <p class="role">Markets, Operations &amp; Community</p>
+          </div>
+          <div class="card who">
+            <div class="init">DB</div>
+            <h3>Druhin Basu</h3>
+            <p class="role">Strategy &amp; Growth</p>
+          </div>
+        </div>
+        <p class="lede" style="margin-top:1.6em;font-size:1em;max-width:42em">
+          Live open beta on rive.work — Google sign-in; clients, projects, agreements, and invoices today. We record money on the record — we don’t collect or transfer it.
+        </p>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 5 Insight -->
+  <section class="slide" data-i="5" data-title="Insight" data-sum="Finding the client is hard.">
+    <div class="pad">
+      <div class="head"><p class="kicker">Unique insight</p><p class="slide-no"><b>05</b> / 12</p></div>
+      <div class="body">
+        <p class="h1-lg" style="max-width:16em">Finding the client is hard.<br />The rest shouldn’t be.</p>
+        <div class="rule"></div>
+        <div class="insight">
+          <div>
+            <p class="lede" style="font-size:1em;max-width:28em">
+              Independents already win getting work. The messy part is keeping clients, projects, agreements, invoices, and expenses coherent — the human becomes unpaid middleware across chat, docs, and billing tools.
+            </p>
+            <p class="lede" style="margin-top:1em;font-weight:500;color:var(--blue);font-size:1em">
+              Rive: one record per client relationship — after the client is found.
+            </p>
+            <p class="note" style="margin-top:1.15em">Supporting line only: one business shouldn’t live in five tabs.</p>
+          </div>
+          <div class="insight-vis">
+            <div class="card">
+              <p class="split-h before">Before</p>
+              <div class="scatter">
+                <span class="chip">WhatsApp</span>
+                <span class="chip">Docs</span>
+                <span class="chip">Boards</span>
+                <span class="chip">Invoice tools</span>
+              </div>
+              <p class="note" style="margin-top:0.9em">Human carries state.</p>
+            </div>
+            <div class="card">
+              <p class="split-h after">After</p>
+              <ul class="attach">
+                <li><span class="n">01</span><span>Client</span></li>
+                <li><span class="n">02</span><span>Project</span></li>
+                <li><span class="n">03</span><span>Agreement</span></li>
+                <li><span class="n">04</span><span>Invoice</span></li>
+                <li><span class="n">05</span><span>Proof</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 6 Why now -->
+  <section class="slide" data-i="6" data-title="Why now" data-sum="The gap is open again.">
+    <div class="pad">
+      <div class="head"><p class="kicker">Why now</p><p class="slide-no"><b>06</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="margin-bottom:0.85em">The gap is open again.</h1>
+        <div class="why">
+          <div class="why-row"><span class="idx">01</span><span class="t">Unpaid middleware</span><span class="b">Independents still carry state across WhatsApp, docs, boards, and invoice tools.</span></div>
+          <div class="why-row"><span class="idx">02</span><span class="t">Zoom × Bonsai</span><span class="b">Big-tech interest in solopreneur / small-firm OS (deal Nov–Dec 2025).</span></div>
+          <div class="why-row"><span class="idx">03</span><span class="t">AND.CO shut</span><span class="b">Fiverr Workspace closed 1 Mar 2026 — freelance-admin vacancy.</span></div>
+          <div class="why-row"><span class="idx">04</span><span class="t">Peer prices up</span><span class="b">HoneyBook / Dubsado list prices moved through 2025 — room for a calmer free beta.</span></div>
+          <div class="why-row"><span class="idx">05</span><span class="t">India-founded</span><span class="b">Built for India + global specialists; Remit stays preview, not live collection.</span></div>
+        </div>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 7 Market -->
+  <section class="slide" data-i="7" data-title="Market" data-sum="Thin conversion. Real category.">
+    <div class="pad">
+      <div class="head"><p class="kicker">Market</p><p class="slide-no"><b>07</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1">Thin conversion. Real category.</h1>
+        <p class="note" style="margin-top:0.55em;max-width:40em">ICP: freelancers, specialists, studios, small service teams with multiple clients — India + global. Not wedding CRM. Not marketplace talent.</p>
+        <div class="mkt">
+          <div class="mkt-row">
+            <div class="fig">~12M</div>
+            <div class="copy">India gig workers FY2025<span class="sub">Most are not buyers — envelope only, not TAM.</span></div>
+          </div>
+          <div class="mkt-row">
+            <div class="fig">50–150K</div>
+            <div class="copy"><span class="label-pill">Assumption</span> &nbsp; Addressable knowledge freelancers / studios<span class="sub">Who would pay for a client / project / invoice workspace.</span></div>
+          </div>
+          <div class="mkt-row">
+            <div class="fig">$7–36M</div>
+            <div class="copy"><span class="label-pill">Assumption</span> &nbsp; India SAM / year at $12–20/mo ARPU<span class="sub">Buyers × ARPU. Not a Rive forecast, price, or ARR.</span></div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:1.1em">Category proof (not our TAM): HoneyBook ~$140M ARR · TechCrunch Mar 2025.</p>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 8 Product -->
+  <section class="slide" data-i="8" data-title="Product" data-sum="Honest live vs preview">
+    <div class="pad">
+      <div class="head"><p class="kicker">Product</p><p class="slide-no"><b>08</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="margin-bottom:1em">Honest live vs preview.</h1>
+        <div class="grid-2">
+          <div class="card" style="padding:1.3em 1.4em">
+            <div class="n">Live — open beta</div>
+            <ul class="clean">
+              <li>Clients, projects, tasks, milestones, budgets</li>
+              <li>Agreements with recorded acceptance</li>
+              <li>Invoices, payment records, expenses</li>
+              <li>Portfolio publish + enquiries</li>
+              <li>CSV / XLSX import</li>
+              <li>Google sign-in · one operator · free</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:1.3em 1.4em">
+            <div class="n mute">Preview / not yet</div>
+            <ul class="clean preview-list">
+              <li>Remit / payouts / fund collection</li>
+              <li>Multi-seat / shared team access</li>
+              <li>Paid plans (TBD after beta)</li>
+            </ul>
+            <p class="note" style="margin-top:1.35em">Records money. Does not collect or transfer.<br />Calendar off this deck.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 9 Competition -->
+  <section class="slide" data-i="9" data-title="Competition" data-sum="Workspace continuity, not pay rails">
+    <div class="pad">
+      <div class="head"><p class="kicker">Competition</p><p class="slide-no"><b>09</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="max-width:18em;margin-bottom:0.85em">Workspace continuity — not a pay-rails bake-off.</h1>
+        <div class="lane">
+          <div class="hd">Peer</div>
+          <div class="hd">Payments-heavy US OS</div>
+          <div class="hd">Connected record / free beta</div>
+          <div class="peer">Bonsai / Moxie</div>
+          <div>US rails + feature density</div>
+          <div>—</div>
+        </div>
+        <div class="lane rive">
+          <div class="peer">Rive</div>
+          <div>Records only — no collection</div>
+          <div class="mark">One operator · open beta · the loop</div>
+        </div>
+        <div class="peers">
+          <p><strong>HoneyBook</strong> — ~$140M ARR, creative/event skew. Scale proof only; wrong DNA.</p>
+          <p><strong>Dubsado</strong> — ~30k paying, deep Flows. Setup-heavy; Rive is the calmer record.</p>
+          <p><strong>Defellix</strong> — India contracts + OTP evidence. Agreements slice, not a full workspace.</p>
+          <p><strong>AND.CO</strong> — shut 1 Mar 2026. Vacancy signal, not a live peer.</p>
+        </div>
+        <p class="note" style="margin-top:1em">Default enemy: DIY stack (WhatsApp + Notion + Docs + invoicing). Narrow wedge vs Bonsai/Moxie — no feature bake-off.</p>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 10 Model -->
+  <section class="slide" data-i="10" data-title="Model" data-sum="Prove the record. Price later.">
+    <div class="pad">
+      <div class="head"><p class="kicker">Business model</p><p class="slide-no"><b>10</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1" style="margin-bottom:1.1em">Prove the record. Price later.</h1>
+        <div class="grid-2">
+          <div class="card" style="min-height:11em;padding:1.45em 1.5em">
+            <div class="n">Now</div>
+            <h3 style="font-size:1.45em;margin:0.55em 0 0.45em;letter-spacing:-0.03em">Free open beta</h3>
+            <p>No credit card. One operator. Prove the independent-operator record.</p>
+          </div>
+          <div class="card" style="min-height:11em;padding:1.45em 1.5em">
+            <div class="n mute">Next</div>
+            <h3 style="font-size:1.45em;margin:0.55em 0 0.45em;letter-spacing:-0.03em">Paid plan <span class="tbd">TBD</span></h3>
+            <p>After beta. Do not invent tiers, ARPU, or take rates. Remit fees are not a claim for this raise.</p>
+          </div>
+        </div>
+        <p class="note" style="margin-top:1.4em">Safe line: Free in open beta while we prove the record; paid plan TBD after beta.</p>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 11 Ask -->
+  <section class="slide" data-i="11" data-title="Ask" data-sum="$350K to prove one loop">
+    <div class="pad">
+      <div class="head"><p class="kicker">The ask</p><p class="slide-no"><b>11</b> / 12</p></div>
+      <div class="body">
+        <h1 class="h1">$350K — runway to prove one loop.</h1>
+        <p class="note" style="margin-top:0.4em">Not to build a platform. AJVC publishes ₹1.5 Cr / 9% — so $350K = AJVC + others structure.</p>
+        <div class="funds">
+          <div><div class="pct">50%</div><h3>Product / Eng</h3><p>~$175K · harden client → project → invoice depth</p></div>
+          <div><div class="pct">30%</div><h3>GTM</h3><p>~$105K · content, community, early tests</p></div>
+          <div><div class="pct">20%</div><h3>Runway / Ops</h3><p>~$70K · legal, infra, buffer</p></div>
+        </div>
+        <p class="muted" style="margin-top:1.15em;font-weight:500;color:var(--navy);letter-spacing:0.08em;text-transform:uppercase;font-size:0.68em">Evidence gates · 18–24 mo</p>
+        <div class="gates">
+          <div class="gate"><span class="g">01</span><p>Grow deeply activated ~25 → <span class="tbd">TBD</span> with definition held constant</p></div>
+          <div class="gate"><span class="g">02</span><p>Launch paid plan when ready — <span class="tbd">TBD</span> paying operators (no current ARR)</p></div>
+          <div class="gate"><span class="g">03</span><p>Prove one GTM channel for multi-client independents <span class="tbd">TBD</span></p></div>
+          <div class="gate"><span class="g">04</span><p>Next-raise done criteria <span class="tbd">TBD — Arnav</span></p></div>
+        </div>
+      </div>
+      <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
+    </div>
+  </section>
+
+  <!-- 12 Close -->
+  <section class="slide is-cinematic" data-i="12" data-title="Close" data-sum="arnav@rive.work">
+    <div class="pad">
+      <div class="body">
+        <div class="wm wm-hero">rive<span class="dot">.</span></div>
+        <div class="rule"></div>
+        <p class="lede" style="max-width:24em">
+          The workspace for freelancers and independent studios managing multiple clients.
+        </p>
+        <p style="margin-top:1.8em"><a class="mail" href="mailto:arnav@rive.work">arnav@rive.work</a></p>
+        <p class="meta" style="margin-top:0.45em">rive.work · Open beta — free to try</p>
+      </div>
+      <div class="foot"><span>Confidential</span><span>12 / 12</span></div>
+    </div>
+  </section>
+
+</div>
+  <p class="hint" id="hint">← → click · O overview · P print</p>
+  <div class="nav">
+    <button type="button" id="prev" aria-label="Previous slide">‹</button>
+    <button type="button" id="next" aria-label="Next slide">›</button>
+  </div>
+</div>
+</div>
+
+<div class="overview" id="overview" hidden>
+  <div class="overview-top">
+    <div class="wm">rive<span class="dot">.</span></div>
+    <p>Overview · Esc to close</p>
+  </div>
+  <div class="overview-grid" id="overviewGrid"></div>
+</div>
+
+<script>
+(function () {
+  const slides = [...document.querySelectorAll(".slide")];
+  const progress = document.getElementById("progress");
+  const overview = document.getElementById("overview");
+  const grid = document.getElementById("overviewGrid");
+  const stage = document.getElementById("stage");
+  const hint = document.getElementById("hint");
+  let i = 0;
+  let overviewOpen = false;
+
+  slides.forEach((s, idx) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ov-card";
+    btn.innerHTML =
+      '<span class="on">' + String(idx + 1).padStart(2, "0") + "</span>" +
+      '<span class="ot">' + (s.dataset.title || "Slide") + "</span>" +
+      '<span class="os">' + (s.dataset.sum || "") + "</span>";
+    btn.addEventListener("click", (e) => { e.stopPropagation(); show(idx); closeOverview(); });
+    grid.appendChild(btn);
+  });
+
+  function syncOverview() {
+    [...grid.children].forEach((c, idx) => c.classList.toggle("current", idx === i));
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+    progress.style.width = ((i + 1) / slides.length * 100) + "%";
+    history.replaceState(null, "", "#" + (i + 1));
+    if (hint) hint.classList.toggle("gone", i !== 0);
+    syncOverview();
+  }
+
+  function openOverview() {
+    overviewOpen = true;
+    overview.hidden = false;
+    overview.classList.add("open");
+    syncOverview();
+  }
+  function closeOverview() {
+    overviewOpen = false;
+    overview.classList.remove("open");
+    overview.hidden = true;
+  }
+  function toggleOverview() { overviewOpen ? closeOverview() : openOverview(); }
+
+  document.getElementById("prev").addEventListener("click", (e) => { e.stopPropagation(); show(i - 1); });
+  document.getElementById("next").addEventListener("click", (e) => { e.stopPropagation(); show(i + 1); });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { closeOverview(); return; }
+    if (e.key === "o" || e.key === "O") { e.preventDefault(); toggleOverview(); return; }
+    if ((e.key === "p" || e.key === "P") && !e.metaKey && !e.ctrlKey) {
+      e.preventDefault();
+      closeOverview();
+      window.print();
+      return;
+    }
+    if (overviewOpen) return;
+    if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key === "Home") { e.preventDefault(); show(0); }
+    if (e.key === "End") { e.preventDefault(); show(slides.length - 1); }
+  });
+
+  stage.addEventListener("click", (e) => {
+    if (overviewOpen) return;
+    if (e.target.closest("a, button")) return;
+    if (window.getSelection && String(window.getSelection())) return;
+    const rect = stage.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    show(i + (x < rect.width * 0.28 ? -1 : 1));
+  });
+
+  let touchX = null;
+  document.addEventListener("touchstart", (e) => { touchX = e.changedTouches[0].screenX; }, { passive: true });
+  document.addEventListener("touchend", (e) => {
+    if (touchX == null || overviewOpen) return;
+    const dx = e.changedTouches[0].screenX - touchX;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    touchX = null;
+  }, { passive: true });
+
+  window.addEventListener("hashchange", () => {
+    const n = parseInt((location.hash || "#1").slice(1), 10);
+    if (Number.isFinite(n)) show(n - 1);
+  });
+
+  const hash = parseInt((location.hash || "#1").slice(1), 10);
+  show(Number.isFinite(hash) ? hash - 1 : 0);
+})();
+</script>
+</body>
+</html>
