@@ -85,12 +85,15 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    padding: 6.2cqi 7.2cqi 3.4cqi;
+    padding: 6.2cqi 8.6cqi 3.4cqi 7.2cqi;
     font-size: clamp(12px, 1.15cqi, 20px);
   }
   .slide.is-cinematic .pad {
-    padding: 7cqi 7.2cqi 3.6cqi;
+    padding: 7cqi 8.6cqi 3.6cqi 7.2cqi;
+  }
+  .slide.is-cinematic .body {
     justify-content: center;
+    padding-bottom: 0.6em;
   }
 
   .head {
@@ -118,6 +121,12 @@
   .slide-no b { color: var(--navy); font-weight: 600; }
 
   .body { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .slide:not(.is-cinematic) .body > :first-child { margin-top: auto; }
+  .slide:not(.is-cinematic) .body > :last-child { margin-bottom: auto; }
+  .cluster {
+    width: 100%;
+    margin-block: auto;
+  }
   .foot {
     display: flex;
     justify-content: space-between;
@@ -153,7 +162,7 @@
   }
 
   h1, .h1 {
-    font-size: 2.35em;
+    font-size: 2.55em;
     font-weight: 600;
     letter-spacing: -0.035em;
     line-height: 1.12;
@@ -161,7 +170,7 @@
     color: var(--navy);
   }
   .h1-lg {
-    font-size: 2.85em;
+    font-size: 2.95em;
     font-weight: 600;
     letter-spacing: -0.038em;
     line-height: 1.08;
@@ -183,8 +192,14 @@
     max-width: 46em;
   }
 
+  .card.stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 13.5em;
+  }
   .big-num {
-    font-size: 5.4em;
+    font-size: 6.1em;
     font-weight: 700;
     letter-spacing: -0.055em;
     line-height: 0.9;
@@ -230,10 +245,27 @@
   .grid-5 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 0.85em;
-    margin-top: 1.6em;
+    gap: 0.7em;
+    margin-top: 1.45em;
     position: relative;
   }
+  .record { list-style: none; }
+  .record > li {
+    background: var(--white);
+    border: 1px solid var(--soft);
+    border-radius: 10px;
+    padding: 1em 1.05em 1.1em;
+  }
+  .record .idx {
+    display: block;
+    color: var(--blue);
+    font-size: 0.68em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.7em;
+  }
+  .record h3 { font-size: 1.05em; font-weight: 600; margin-bottom: 0.25em; letter-spacing: -0.02em; }
+  .record .ex { font-size: 0.8em; color: var(--grey); line-height: 1.35; }
   .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9em; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1em; }
   .grid-2.align { align-items: stretch; }
@@ -260,33 +292,6 @@
     margin-bottom: 0.3em;
   }
   .card p { font-size: 0.8em; color: var(--grey); line-height: 1.4; }
-
-  .spine-item {
-    position: relative;
-    padding-top: 0.35em;
-  }
-  .spine-item::before {
-    content: "";
-    position: absolute;
-    top: -0.15em;
-    left: 0;
-    width: 0.42em;
-    height: 0.42em;
-    border-radius: 50%;
-    background: var(--blue);
-    z-index: 1;
-  }
-  .grid-5::before {
-    content: "";
-    position: absolute;
-    top: 0.05em;
-    left: 0.2em;
-    right: 0.2em;
-    height: 1px;
-    background: var(--soft);
-  }
-  .spine-item h3 { font-size: 1.02em; font-weight: 600; margin: 0.55em 0 0.2em; }
-  .spine-item .ex { font-size: 0.8em; color: var(--grey); line-height: 1.35; }
 
   /* Funnel */
   .funnel { list-style: none; }
@@ -368,14 +373,30 @@
   .preview-list li::before { background: #C9C2B6; }
 
   /* Team */
-  .who h3 { font-size: 1.15em; letter-spacing: -0.025em; margin-bottom: 0.35em; }
+  .who { padding: 1.45em 1.3em 1.55em; min-height: 9.2em; }
+  .who h3 { font-size: 1.18em; letter-spacing: -0.025em; margin-bottom: 0.4em; }
   .who .role { font-size: 0.85em; color: var(--grey); line-height: 1.35; }
   .who .init {
     font-size: 0.68em;
     font-weight: 600;
     letter-spacing: 0.12em;
     color: var(--blue);
-    margin-bottom: 1.1em;
+    margin-bottom: 1.35em;
+  }
+
+  /* Insight */
+  .insight {
+    display: grid;
+    grid-template-columns: 1.12fr 1fr;
+    gap: 1.35em;
+    align-items: start;
+    margin-top: 0.15em;
+  }
+  .insight-vis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7em;
+    align-items: stretch;
   }
 
   /* Split before/after */
@@ -486,47 +507,53 @@
 
   /* Chrome (screen) */
   .progress {
-    position: fixed;
+    position: absolute;
     top: 0; left: 0;
     height: 2px;
     width: 0;
     background: var(--blue);
-    z-index: 40;
+    z-index: 15;
     pointer-events: none;
     transition: width 0.28s var(--ease);
   }
   .hint {
-    position: fixed;
-    left: 1.1rem;
-    bottom: 1.15rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.04em;
-    color: rgba(250, 248, 244, 0.45);
-    z-index: 30;
+    position: absolute;
+    left: 50%;
+    bottom: 3.9cqi;
+    transform: translateX(-50%);
+    font-size: 0.68em;
+    letter-spacing: 0.05em;
+    color: var(--grey);
+    z-index: 12;
     user-select: none;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
   }
+  .hint.gone { opacity: 0; }
   .nav {
-    position: fixed;
-    right: 1.1rem;
-    bottom: 1.05rem;
+    position: absolute;
+    right: 1.35cqi;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
-    gap: 0.45rem;
-    z-index: 30;
+    flex-direction: column;
+    gap: 0.4rem;
+    z-index: 12;
   }
   .nav button {
-    width: 2.4rem;
-    height: 2.4rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 999px;
-    border: 1px solid rgba(250, 248, 244, 0.18);
-    background: rgba(250, 248, 244, 0.08);
-    color: var(--cream);
+    border: 1px solid var(--soft);
+    background: var(--white);
+    color: var(--navy);
     cursor: pointer;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     line-height: 1;
     display: grid;
     place-items: center;
   }
-  .nav button:hover { border-color: var(--blue); color: var(--blue); background: var(--cream); }
+  .nav button:hover { border-color: var(--blue); color: var(--blue); }
   .nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
   /* Overview */
@@ -580,7 +607,8 @@
     .overview-grid { grid-template-columns: repeat(2, 1fr); }
     .hint { display: none; }
     .grid-5 { grid-template-columns: 1fr 1fr; }
-    .grid-5::before { display: none; }
+    .insight, .insight-vis { grid-template-columns: 1fr; }
+    .nav { position: fixed; right: 0.8rem; bottom: 0.8rem; top: auto; transform: none; flex-direction: row; }
     .why-row { grid-template-columns: 2em 1fr; }
     .why-row .t { grid-column: 2; }
     .why-row .b { grid-column: 2; }
@@ -647,10 +675,9 @@
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
-<div class="progress" id="progress" aria-hidden="true"></div>
-
 <div class="viewport">
 <div class="stage" id="stage">
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="deck" id="deck">
 
   <!-- 1 Title -->
@@ -678,12 +705,12 @@
         <p class="lede" style="margin-top:0.85em;max-width:40em">
           The relationship, the work, the promise, the money, and the proof stay attached — so the operator stops being unpaid middleware between chat, docs, and billing tools.
         </p>
-        <ol class="grid-5" style="list-style:none">
-          <li class="spine-item"><span class="n" style="color:var(--blue);font-size:0.7em;font-weight:600;letter-spacing:0.1em">01</span><h3>Client</h3><p class="ex">Aster House</p></li>
-          <li class="spine-item"><span class="n" style="color:var(--blue);font-size:0.7em;font-weight:600;letter-spacing:0.1em">02</span><h3>Project</h3><p class="ex">Website launch</p></li>
-          <li class="spine-item"><span class="n" style="color:var(--blue);font-size:0.7em;font-weight:600;letter-spacing:0.1em">03</span><h3>Agreement</h3><p class="ex">Terms accepted</p></li>
-          <li class="spine-item"><span class="n" style="color:var(--blue);font-size:0.7em;font-weight:600;letter-spacing:0.1em">04</span><h3>Invoice</h3><p class="ex">INV-024 recorded</p></li>
-          <li class="spine-item"><span class="n" style="color:var(--blue);font-size:0.7em;font-weight:600;letter-spacing:0.1em">05</span><h3>Portfolio</h3><p class="ex">Enquiry returns</p></li>
+        <ol class="grid-5 record">
+          <li><span class="idx">01</span><h3>Client</h3><p class="ex">Aster House</p></li>
+          <li><span class="idx">02</span><h3>Project</h3><p class="ex">Website launch</p></li>
+          <li><span class="idx">03</span><h3>Agreement</h3><p class="ex">Terms accepted</p></li>
+          <li><span class="idx">04</span><h3>Invoice</h3><p class="ex">INV-024 recorded</p></li>
+          <li><span class="idx">05</span><h3>Portfolio</h3><p class="ex">Enquiry returns</p></li>
         </ol>
         <p class="note" style="margin-top:1.35em">Payment is recorded on the work — Rive does not collect or transfer funds.</p>
       </div>
@@ -698,11 +725,11 @@
       <div class="body">
         <h1 class="h1" style="margin-bottom:0.9em">Depth over vanity.</h1>
         <div class="grid-2 align">
-          <div class="card" style="padding:1.4em 1.45em 1.5em">
+          <div class="card stat" style="padding:1.4em 1.45em 1.5em">
             <p class="muted" style="margin-bottom:0.35em;letter-spacing:0.04em">Deeply activated</p>
             <div class="big-num">~25</div>
-            <p class="note" style="margin-top:0.9em;max-width:22em;font-size:0.88em;color:var(--navy);line-height:1.45">
-              Activated <em>and</em> (payment recorded <strong>or</strong> agreement accepted <strong>or</strong> portfolio enquiry).
+            <p class="note" style="margin-top:0.9em;max-width:24em;font-size:0.88em;color:var(--navy);line-height:1.45">
+              Activated <em>and</em><br />(payment recorded <strong>or</strong> agreement accepted <strong>or</strong> portfolio enquiry).
             </p>
           </div>
           <div class="card" style="padding:1.4em 1.45em 1.5em">
@@ -759,7 +786,7 @@
       <div class="body">
         <p class="h1-lg" style="max-width:16em">Finding the client is hard.<br />The rest shouldn’t be.</p>
         <div class="rule"></div>
-        <div class="grid-2" style="margin-top:0.2em;flex:1">
+        <div class="insight">
           <div>
             <p class="lede" style="font-size:1em;max-width:28em">
               Independents already win getting work. The messy part is keeping clients, projects, agreements, invoices, and expenses coherent — the human becomes unpaid middleware across chat, docs, and billing tools.
@@ -767,8 +794,9 @@
             <p class="lede" style="margin-top:1em;font-weight:500;color:var(--blue);font-size:1em">
               Rive: one record per client relationship — after the client is found.
             </p>
+            <p class="note" style="margin-top:1.15em">Supporting line only: one business shouldn’t live in five tabs.</p>
           </div>
-          <div class="grid-2" style="gap:0.75em;margin-top:0">
+          <div class="insight-vis">
             <div class="card">
               <p class="split-h before">Before</p>
               <div class="scatter">
@@ -791,7 +819,6 @@
             </div>
           </div>
         </div>
-        <p class="note" style="margin-top:1.1em">Supporting line only: one business shouldn’t live in five tabs.</p>
       </div>
       <div class="foot"><span class="wm-mini">rive<span class="dot">.</span></span><span>Confidential</span></div>
     </div>
@@ -971,13 +998,12 @@
   </section>
 
 </div>
+  <p class="hint" id="hint">← → click · O overview · P print</p>
+  <div class="nav">
+    <button type="button" id="prev" aria-label="Previous slide">‹</button>
+    <button type="button" id="next" aria-label="Next slide">›</button>
+  </div>
 </div>
-</div>
-
-<div class="hint">← → click · O overview · P print PDF</div>
-<div class="nav">
-  <button type="button" id="prev" aria-label="Previous slide">‹</button>
-  <button type="button" id="next" aria-label="Next slide">›</button>
 </div>
 
 <div class="overview" id="overview" hidden>
@@ -995,6 +1021,7 @@
   const overview = document.getElementById("overview");
   const grid = document.getElementById("overviewGrid");
   const stage = document.getElementById("stage");
+  const hint = document.getElementById("hint");
   let i = 0;
   let overviewOpen = false;
 
@@ -1019,6 +1046,7 @@
     slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
     progress.style.width = ((i + 1) / slides.length * 100) + "%";
     history.replaceState(null, "", "#" + (i + 1));
+    if (hint) hint.classList.toggle("gone", i !== 0);
     syncOverview();
   }
 
